@@ -29,7 +29,7 @@ class _fivepdfState extends State<fivepdf> {
         corruptedPathPDF = f.path;
       });
     });
-    fromAsset('assets/demo-link.pdf', 'demo.pdf').then((f) {
+    fromAsset('assets/1.pdf', 'demo.pdf').then((f) {
       setState(() {
         pathPDF = f.path;
       });
@@ -174,7 +174,7 @@ class PDFScreen extends StatefulWidget {
 
 class _PDFScreenState extends State<PDFScreen> with WidgetsBindingObserver {
   final Completer<PDFViewController> _controller =
-  Completer<PDFViewController>();
+      Completer<PDFViewController>();
   int? pages = 0;
   int? currentPage = 0;
   bool isReady = false;
@@ -205,7 +205,7 @@ class _PDFScreenState extends State<PDFScreen> with WidgetsBindingObserver {
             defaultPage: currentPage!,
             fitPolicy: FitPolicy.BOTH,
             preventLinkNavigation:
-            false, // if set to true the link is handled in flutter
+                false, // if set to true the link is handled in flutter
             onRender: (_pages) {
               setState(() {
                 pages = _pages;
@@ -239,13 +239,13 @@ class _PDFScreenState extends State<PDFScreen> with WidgetsBindingObserver {
           ),
           errorMessage.isEmpty
               ? !isReady
-              ? Center(
-            child: CircularProgressIndicator(),
-          )
-              : Container()
+                  ? Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : Container()
               : Center(
-            child: Text(errorMessage),
-          )
+                  child: Text(errorMessage),
+                )
         ],
       ),
       floatingActionButton: FutureBuilder<PDFViewController>(
